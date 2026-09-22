@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luisa's study routine</title>
+  <!-- Link para o ficheiro CSS separado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Luisa's study routine</h1>
+      <p>Mapeamento de desafios e dores na rotina de estudos e trabalho</p>
+    </header>
+
+    <main class="cards-grid">
+      <!-- Card 1 -->
+      <div class="card" onclick="openModal('modal1')">
+        <div>
+          <div class="card-icon">⏳</div>
+          <h3>Sobrecarga de Tarefas</h3>
+          <p>Sensação constante de ter coisas demais para fazer entre o trabalho e a faculdade.</p>
+        </div>
+        <span class="tag incomodo">Incômodo</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" onclick="openModal('modal2')">
+        <div>
+          <div class="card-icon">📱</div>
+          <h3>Dificuldade de Foco</h3>
+          <p>Notificações e redes sociais tirando a atenção no momento em que preciso estudar.</p>
+        </div>
+        <span class="tag foco">Atenção</span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" onclick="openModal('modal3')">
+        <div>
+          <div class="card-icon">😴</div>
+          <h3>Cansaço Extremo</h3>
+          <p>Chegar do trabalho exausta e não ter energia mental para absorver os conteúdos.</p>
+        </div>
+        <span class="tag rotina">Rotina</span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" onclick="openModal('modal4')">
+        <div>
+          <div class="card-icon">📅</div>
+          <h3>Falta de Planejamento</h3>
+          <p>Não saber por onde começar ou o que dar prioridade na semana.</p>
+        </div>
+        <span class="tag incomodo">Organização</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAIS (Janelas Flutuantes) -->
+
+  <!-- Modal 1 -->
+  <div class="modal-overlay" id="modal1">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+      <h2>Sobrecarga de Tarefas ⏳</h2>
+      <div class="modal-content">
+        <p><strong>Problema Real:</strong> Tentar equilibrar entregas do trabalho com prazos de trabalhos acadêmicos gera ansiedade e sensação de incapacidade.</p>
+        <div class="solution-box">
+          <h4>💡 Como o app ajudará:</h4>
+          <p>Dividir grandes projetos em pequenas tarefas diárias com metas simples de cumprir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal-overlay" id="modal2">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
+      <h2>Dificuldade de Foco 📱</h2>
+      <div class="modal-content">
+        <p><strong>Problema Real:</strong> O celular se torna uma fuga do cansaço, fazendo com que 30 minutos de estudo virem horas de distração.</p>
+        <div class="solution-box">
+          <h4>💡 Como o app ajudará:</h4>
+          <p>Temporizador visual (técnica Pomodoro) com blocos curtos de estudo para não cansar a mente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal-overlay" id="modal3">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('modal3')">&times;</button>
+      <h2>Cansaço Extremo 😴</h2>
+      <div class="modal-content">
+        <p><strong>Problema Real:</strong> Estudar à noite após um dia inteiro de trabalho resulta em baixo rendimento e frustração.</p>
+        <div class="solution-box">
+          <h4>💡 Como o app ajudará:</h4>
+          <p>Sugestão de revisões rápidas em cards para dias com baixa energia, sem culpa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal-overlay" id="modal4">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal('modal4')">&times;</button>
+      <h2>Falta de Planejamento 📅</h2>
+      <div class="modal-content">
+        <p><strong>Problema Real:</strong> Perder tempo decidindo o que estudar antes de realmente começar a estudar.</p>
+        <div class="solution-box">
+          <h4>💡 Como o app ajudará:</h4>
+          <p>Cronograma semanal visual onde o dia já começa com a tarefa prioritária definida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link para o ficheiro JavaScript separado -->
+  <script src="script.js"></script>
+</body>
+</html>
