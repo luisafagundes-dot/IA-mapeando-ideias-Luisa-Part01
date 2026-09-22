@@ -1,0 +1,212 @@
+/* Importação de fonte no estilo Pixel / Retro Soft */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Press+Start+2P&display=swap');
+
+:root {
+  --bg-color: #fefced;
+  --card-bg: #ffffff;
+  --primary: #f6e05e;
+  --primary-hover: #ecc94b;
+  --text-color: #4a5568;
+  --border-color: #cbd5e0;
+  --accent-pink: #fed7d7;
+  --accent-green: #c6f6d5;
+  --accent-blue: #bee3f8;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fredoka', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+
+  /* Efeito de Fundo Pixelado / Grade Retro */
+  background-image: 
+    linear-gradient(to right, rgba(236, 201, 75, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(236, 201, 75, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 3px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.4rem;
+  color: #d69e2e;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+header p {
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* Grid de Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px solid #edf2f7;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: var(--primary);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  background-color: var(--primary);
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.tag.incomodo { background-color: var(--accent-pink); }
+.tag.rotina { background-color: var(--accent-blue); }
+.tag.foco { background-color: var(--accent-green); }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  border: 3px solid var(--primary);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+  transform: translateY(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.close-btn:hover {
+  color: #2d3748;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  color: #2d3748;
+  font-size: 1.3rem;
+}
+
+.modal-content p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.solution-box {
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-hover);
+  margin-top: 1rem;
+}
+
+.solution-box h4 {
+  color: #d69e2e;
+  margin-bottom: 0.3rem;
+}
