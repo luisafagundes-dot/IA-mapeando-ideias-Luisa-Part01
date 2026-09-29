@@ -1,196 +1,74 @@
-/* RESET BÁSICO */
+/* Reset básico e fontes */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ESTILO GERAL E FUNDO PIXELADO */
 body {
-    font-family: 'Fredoka', sans-serif;
-    color: #4a4436;
-    background-color: #fffdf0;
-    /* Fundo com padrão geométrico estilo pixel art/xadrez suave */
-    background-image: 
-        linear-gradient(45deg, #f7f1d5 25%, transparent 25%), 
-        linear-gradient(-45deg, #f7f1d5 25%, transparent 25%), 
-        linear-gradient(45deg, transparent 75%, #f7f1d5 75%), 
-        linear-gradient(-45deg, transparent 75%, #f7f1d5 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-/* CONTAINER PRINCIPAL */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* HEADER */
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-    background-color: rgba(255, 253, 240, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* TÍTULO PIXELADO PEDIDO */
-.pixel-title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.8rem;
-    color: #d69e2e;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 0px #ffe27d;
-}
-
-.subtitle {
-    font-size: 1rem;
-    color: #746850;
-}
-
-/* GRADE DE CARDS */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-/* ESTILIZAÇÃO DOS CARDS */
-.card {
-    background-color: #fffef5;
-    border: 2px solid #f3e5ab;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
+    background-color: #f0f2f5;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(214, 158, 46, 0.15);
-    background-color: #ffffff;
-}
-
-.card-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    font-size: 1.2rem;
-    color: #b7791f;
-    margin-bottom: 8px;
-}
-
-.card p {
-    font-size: 0.9rem;
-    color: #665c47;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.btn-card {
-    background-color: #fef08a;
-    border: 1px solid #facc15;
-    color: #713f12;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    align-self: flex-start;
-}
-
-.btn-card:hover {
-    background-color: #fde047;
-}
-
-/* ESTILIZAÇÃO DOS MODAIS */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 100; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.3);
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
-.modal-content {
-    background-color: #fffdf0;
-    border: 2px solid #fef08a;
-    padding: 25px;
-    border-radius: 16px;
+/* Container principal */
+.container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
     width: 90%;
-    max-width: 450px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    position: relative;
-    animation: fadeIn 0.2s ease-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+h1 {
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
-.close-btn {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #a39373;
+p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Botão estilizado */
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.close-btn:hover {
-    color: #000;
+.btn:hover {
+    background-color: #0056b3;
 }
 
-.modal h2 {
-    color: #b7791f;
-    margin-bottom: 8px;
-    font-size: 1.3rem;
+.btn:active {
+    transform: scale(0.98);
 }
 
-.modal-desc {
-    font-size: 0.9rem;
-    color: #746850;
-    margin-bottom: 15px;
+/* Caixa de mensagem interativa */
+.message-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-/* CHECKLIST NO MODAL */
-.checklist {
-    list-style: none;
-}
-
-.checklist li {
-    padding: 10px 0;
-    border-bottom: 1px dashed #e2d7b5;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.checklist li:last-child {
-    border-bottom: none;
-}
-
-.checklist input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #d69e2e;
-    cursor: pointer;
+.message-box.active {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
