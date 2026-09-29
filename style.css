@@ -1,212 +1,297 @@
-/* Importação de fonte no estilo Pixel / Retro Soft */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Press+Start+2P&display=swap');
-
+/* Configuração e Variáveis (Cores Amarelas/Pastéis) */
 :root {
-  --bg-color: #fefced;
-  --card-bg: #ffffff;
-  --primary: #f6e05e;
-  --primary-hover: #ecc94b;
-  --text-color: #4a5568;
-  --border-color: #cbd5e0;
-  --accent-pink: #fed7d7;
-  --accent-green: #c6f6d5;
-  --accent-blue: #bee3f8;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --bg-main: #fffde7;
+    --card-bg: #ffffff;
+    --yellow-pastel: #fef08a;
+    --yellow-accent: #facc15;
+    --yellow-dark: #854d0e;
+    --text-color: #422006;
+    --text-light: #713f12;
+    --shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Fredoka', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Fundo da Página Pixelado */
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  padding: 2rem 1rem;
-
-  /* Efeito de Fundo Pixelado / Grade Retro */
-  background-image: 
-    linear-gradient(to right, rgba(236, 201, 75, 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(236, 201, 75, 0.15) 1px, transparent 1px);
-  background-size: 16px 16px;
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(var(--yellow-accent) 1px, transparent 0),
+        radial-gradient(var(--yellow-accent) 1px, var(--bg-main) 0);
+    background-position: 0 0, 10px 10px;
+    background-size: 20px 20px;
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* Estilo do Cabeçalho */
+.header {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: var(--yellow-dark);
+    margin-bottom: 8px;
+    background-color: var(--yellow-pastel);
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--yellow-accent);
+}
+
+.header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Seção do Checklist */
+.checklist-section {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 16px;
+    border: 2px solid var(--yellow-pastel);
+    box-shadow: var(--shadow);
+}
+
+.checklist-section h2 {
+    font-size: 1.4rem;
+    color: var(--yellow-dark);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid var(--yellow-pastel);
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.input-container input:focus {
+    border-color: var(--yellow-accent);
+}
+
+.input-container button {
+    background-color: var(--yellow-pastel);
+    color: var(--yellow-dark);
+    border: 1px solid var(--yellow-accent);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.input-container button:hover {
+    background-color: var(--yellow-accent);
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background-color: #fffbeb;
+    border: 1px solid var(--yellow-pastel);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.task-list li.completed span {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.task-list li input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--yellow-dark);
+}
+
+.task-list li span {
+    flex: 1;
+    font-size: 0.95rem;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.btn-delete:hover {
+    color: #b91c1c;
+}
+
+/* Container de Cards Grid */
 .container {
-  max-width: 900px;
-  margin: 0 auto;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
-/* Cabeçalho */
-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 3px solid var(--primary);
-  box-shadow: var(--shadow);
-}
-
-h1 {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1.4rem;
-  color: #d69e2e;
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-header p {
-  color: #718096;
-  font-size: 1rem;
-}
-
-/* Grid de Cards */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Card */
+/* Estilo dos Cards */
 .card {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 2px solid #edf2f7;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background-color: var(--primary);
+    background-color: var(--card-bg);
+    border: 2px solid var(--yellow-pastel);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(234, 179, 8, 0.3);
+    border-color: var(--yellow-accent);
 }
 
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.card-tag {
+    background-color: var(--yellow-pastel);
+    color: var(--yellow-dark);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 8px;
+    width: fit-content;
+    margin-bottom: 12px;
 }
 
 .card h3 {
-  font-size: 1.1rem;
-  color: #2d3748;
-  margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .card p {
-  font-size: 0.9rem;
-  color: #718096;
-  margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
-.tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 20px;
-  background-color: var(--primary);
-  font-weight: 600;
-  align-self: flex-start;
+.btn-card {
+    background-color: var(--yellow-pastel);
+    color: var(--yellow-dark);
+    border: 1px solid var(--yellow-accent);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.tag.incomodo { background-color: var(--accent-pink); }
-.tag.rotina { background-color: var(--accent-blue); }
-.tag.foco { background-color: var(--accent-green); }
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  padding: 1rem;
+.btn-card:hover {
+    background-color: var(--yellow-accent);
 }
 
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
+/* Estilo da Janela Modal */
 .modal {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 500px;
-  width: 100%;
-  border: 3px solid var(--primary);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  position: relative;
-  transform: translateY(20px);
-  transition: transform 0.3s ease;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.modal-overlay.active .modal {
-  transform: translateY(0);
+.modal-content {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    border: 3px solid var(--yellow-pastel);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #a0aec0;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
 }
 
 .close-btn:hover {
-  color: #2d3748;
+    color: var(--yellow-dark);
 }
 
 .modal h2 {
-  margin-bottom: 1rem;
-  color: #2d3748;
-  font-size: 1.3rem;
+    color: var(--yellow-dark);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 
-.modal-content p {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-  color: #4a5568;
+.modal-section {
+    margin-bottom: 15px;
 }
 
-.solution-box {
-  background-color: var(--bg-color);
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid var(--primary-hover);
-  margin-top: 1rem;
+.modal-section h4 {
+    margin-bottom: 6px;
+    color: var(--text-color);
 }
 
-.solution-box h4 {
-  color: #d69e2e;
-  margin-bottom: 0.3rem;
+.modal-section p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.modal-section ul {
+    margin-left: 20px;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
