@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisa's study routine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <span class="badge-cute">✨ Espaço de Organização ✨</span>
+        <h1>Luisa's study routine</h1>
+        <p>Um cantinho para organizar seus estudos e cultivar uma rotina leve ☁️💛</p>
+    </header>
+
+    <!-- Seção do Checklist -->
+    <section class="checklist-section">
+        <div class="checklist-header">
+            <h2>Tarefas do Dia 📋</h2>
+            <span class="sub-text">Marque conforme for concluindo!</span>
+        </div>
+        
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Adicionar uma tarefa fofa (ex: Estudar 20min)...">
+            <button type="button" onclick="addTask()">+ Adicionar</button>
+        </div>
+
+        <ul id="taskList" class="task-list">
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox" onchange="toggleTask(this)">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Organizar a mesa de estudos 🧹</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox" onchange="toggleTask(this)">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Revisar resumos importantes 📚</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox" onchange="toggleTask(this)">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Definir as 3 metas de amanhã 🌟</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Cards de Conteúdo -->
+    <main class="container">
+        <!-- Card 1 -->
+        <div class="card" onclick="openModal('modal-1')">
+            <div class="card-header">
+                <span class="card-icon">🧠</span>
+                <span class="card-tag">Foco & Concentração</span>
+            </div>
+            <h3>Sobrecarga e Procrastinação</h3>
+            <p>Muitas tarefas acumuladas e constante distração com as redes sociais.</p>
+
+            <button type="button" class="btn-card">
+                Ver Dicas ✨
+            </button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" onclick="openModal('modal-2')">
+            <div class="card-header">
+                <span class="card-icon">⏰</span>
+                <span class="card-tag">Gestão de Tempo</span>
+            </div>
+            <h3>Estudo vs. Trabalho</h3>
+            <p>Como conciliar o cansaço da rotina de trabalho com as metas de estudo.</p>
+
+            <button type="button" class="btn-card">
+                Ver Dicas ✨
+            </button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" onclick="openModal('modal-3')">
+            <div class="card-header">
+                <span class="card-icon">🗓️</span>
+                <span class="card-tag">Planejamento</span>
+            </div>
+            <h3>Desorganização do Cronograma</h3>
+            <p>Criar rotinas irrealistas e acabar perdendo a motivação na semana.</p>
+
+            <button type="button" class="btn-card">
+                Ver Dicas ✨
+            </button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" onclick="openModal('modal-4')">
+            <div class="card-header">
+                <span class="card-icon">🌿</span>
+                <span class="card-tag">Bem-estar</span>
+            </div>
+            <h3>Ambiente e Ansiedade</h3>
+            <p>Lidar com a sensação de estar atrasada e manter o ambiente limpinho.</p>
+
+            <button type="button" class="btn-card">
+                Ver Dicas ✨
+            </button>
+        </div>
+    </main>
+
+    <!-- Modais -->
+
+    <!-- Modal 1 -->
+    <div id="modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-1')">&times;</span>
+            <div class="modal-title-box">
+                <span class="modal-emoji">🧠</span>
+                <h2>Sobrecarga e Procrastinação</h2>
+            </div>
+            
+            <div class="modal-section error-box">
+                <h4> O Incômodo:</h4>
+                <p>Paralisar diante de muitas tarefas e acabar perdendo o foco nas redes sociais por conta do estresse.</p>
+            </div>
+
+            <div class="modal-section success-box">
+                <h4> Solução Suave:</h4>
+                <ul>
+                    <li>Técnica Pomodoro: 25 min de estudo focado + 5 min de descanso agradável.</li>
+                    <li>Deixe o celular longe do alcance enquanto estuda.</li>
+                    <li>Divida grandes tarefas em passos pequenininhos.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-2')">&times;</span>
+            <div class="modal-title-box">
+                <span class="modal-emoji">⏰</span>
+                <h2>Estudo vs. Trabalho</h2>
+            </div>
+            
+            <div class="modal-section error-box">
+                <h4> O Incômodo:</h4>
+                <p>Chegar exausta do trabalho e não ter energia para render nos estudos à noite.</p>
+            </div>
+
+            <div class="modal-section success-box">
+                <h4> Solução Suave:</h4>
+                <ul>
+                    <li>Tente estudar 30 a 45 minutos pela manhã, com a mente descansada.</li>
+                    <li>Aproveite momentos vagos para revisões rápidas ou podcasts.</li>
+                    <li>Valorize o descanso nos fins de semana para recarregar as energias.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-3')">&times;</span>
+            <div class="modal-title-box">
+                <span class="modal-emoji">🗓️</span>
+                <h2>Desorganização do Cronograma</h2>
+            </div>
+            
+            <div class="modal-section error-box">
+                <h4> O Incômodo:</h4>
+                <p>Montar planejamentos impossíveis de cumprir e se frustrar com matérias acumuladas.</p>
+            </div>
+
+            <div class="modal-section success-box">
+                <h4> Solução Suave:</h4>
+                <ul>
+                    <li>Planeje a semana no domingo, deixando espaço para imprevistos.</li>
+                    <li>Defina no máximo 3 tarefas prioritárias por dia.</li>
+                    <li>Lembre-se: constância vale mais do que quantidade em um só dia.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-4')">&times;</span>
+            <div class="modal-title-box">
+                <span class="modal-emoji">🌿</span>
+                <h2>Ambiente e Ansiedade</h2>
+            </div>
+            
+            <div class="modal-section error-box">
+                <h4> O Incômodo:</h4>
+                <p>A sensação contínua de "estar para trás" e ver a mesa de estudos bagunçada.</p>
+            </div>
+
+            <div class="modal-section success-box">
+                <h4> Solução Suave:</h4>
+                <ul>
+                    <li>Arrume seu espaço de estudos ao finalizar as atividades do dia.</li>
+                    <li>Evite comparar sua rotina com a rotina alheia nas redes.</li>
+                    <li>Separe um tempo diário para você relaxar sem culpa.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
