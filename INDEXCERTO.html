@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisa's study routine</title>
+    
+    <!-- Importação de Fontes Google: Fredoka e Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #fffef2;
+            --card-bg: #ffffff;
+            --yellow-soft: #fef08a;
+            --yellow-pastel: #fde047;
+            --yellow-dark: #854d0e;
+            --text-main: #451a03;
+            --text-muted: #78350f;
+            --border-color: #fef08a;
+            --shadow-cute: 0 10px 25px -5px rgba(250, 204, 21, 0.25);
+            --radius-rounded: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Fundo Pixelado Suave com Gradiente Radial */
+        body {
+            background-color: var(--bg-main);
+            background-image: 
+                radial-gradient(#fde047 1.5px, transparent 1.5px),
+                radial-gradient(#fde047 1.5px, var(--bg-main) 1.5px);
+            background-position: 0 0, 12px 12px;
+            background-size: 24px 24px;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        /* Cabeçalho Principal */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .badge-cute {
+            background-color: #ffffff;
+            color: var(--yellow-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 2px solid var(--yellow-soft);
+            display: inline-block;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(250, 204, 21, 0.15);
+        }
+
+        .header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.6rem;
+            color: var(--yellow-dark);
+            margin-bottom: 8px;
+            background-color: #ffffff;
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-cute);
+            border: 3px solid var(--yellow-soft);
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        /* Seção Checklist */
+        .checklist-section {
+            max-width: 550px;
+            margin: 0 auto 45px;
+            background-color: var(--card-bg);
+            padding: 28px;
+            border-radius: var(--radius-rounded);
+            border: 3px solid var(--yellow-soft);
+            box-shadow: var(--shadow-cute);
+        }
+
+        .checklist-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .checklist-header h2 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            color: var(--yellow-dark);
+        }
+
+        .sub-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Campo de Input de Tarefas */
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 2px solid var(--yellow-soft);
+            border-radius: 15px;
+            outline: none;
+            font-size: 0.95rem;
+            background-color: #fffdf0;
+            transition: all 0.2s;
+        }
+
+        .input-container input:focus {
+            border-color: var(--yellow-pastel);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.3);
+        }
+
+        .input-container button {
+            background-color: var(--yellow-soft);
+            color: var(--yellow-dark);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .input-container button:hover {
+            background-color: var(--yellow-pastel);
+            transform: scale(1.03);
+        }
+
+        /* Lista de Tarefas Interativas */
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background-color: #fffef5;
+            border: 2px solid #fef9c3;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .task-list li:hover {
+            border-color: var(--yellow-soft);
+        }
+
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            flex: 1;
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            height: 20px;
+            width: 20px;
+            background-color: #ffffff;
+            border: 2px solid var(--yellow-pastel);
+            border-radius: 6px;
+            margin-right: 12px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #fef08a;
+        }
+
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: var(--yellow-pastel);
+        }
+
+        .custom-checkbox input:checked ~ .checkmark::after {
+            content: "✓";
+            color: var(--yellow-dark);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .custom-checkbox input:checked ~ .task-text {
+            text-decoration: line-through;
+            color: #a3a3a3;
+        }
+
+        .task-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            border: none;
+            color: #ef4444;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .btn-delete:hover {
+            background: #fca5a5;
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Container de Cartões Navegáveis */
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 3px solid var(--yellow-soft);
+            border-radius: var(--radius-rounded);
+            padding: 22px;
+            box-shadow: var(--shadow-cute);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--yellow-pastel);
+            box-shadow: 0 15px 30px -5px rgba(250, 204, 21, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.3rem;
+        }
+
+        .card-tag {
+            background-color: #fef9c3;
+            color: var(--yellow-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .card h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #78716c;
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        .btn-card {
+            background-color: #fffef0;
+            color: var(--yellow-dark);
+            border: 2px solid var(--yellow-soft);
+            padding: 10px;
+            border-radius: 12px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s;
+            display: block;
+            width: 100%;
+        }
+
+        .card:hover .btn-card {
+            background-color: var(--yellow-soft);
+        }
+
+        /* Mensagem de alerta customizada */
+        .toast-msg {
+            display: none;
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            text-align: center;
+            border: 1px solid #fca5a5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <span class="badge-cute">✨ Espaço de Organização ✨</span>
+        <h1>Luisa's study routine</h1>
+        <p>Um cantinho para organizar seus estudos e cultivar uma rotina leve ☁️💛</p>
+    </header>
+
+    <section class="checklist-section">
+        <div class="checklist-header">
+            <h2>Tarefas do Dia 📋</h2>
+            <span class="sub-text">Marque conforme for concluindo!</span>
+        </div>
+        
+        <div id="toastMsg" class="toast-msg">Por favor, digite uma tarefa fofinha antes de adicionar! ✨</div>
+
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Adicionar uma tarefa fofa (ex: Estudar 20min)..." onkeypress="handleKeyPress(event)">
+            <button type="button" onclick="addTask()">+ Adicionar</button>
+        </div>
+
+        <ul id="taskList" class="task-list">
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Organizar a mesa de estudos 🧹</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Revisar resumos importantes 📚</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+            <li>
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="task-text">Definir as 3 metas de amanhã 🌟</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            </li>
+        </ul>
+    </section>
+
+    <main class="container">
+        <!-- Card 1 -->
+        <a href="sobrecarga-procrastinacao.html" class="card">
+            <div class="card-header">
+                <span class="card-icon">🧠</span>
+                <span class="card-tag">Foco & Concentração</span>
+            </div>
+            <h3>Sobrecarga e Procrastinação</h3>
+            <p>Muitas tarefas acumuladas e constante distração com as redes sociais.</p>
+            <span class="btn-card">Ler Artigo Completo ✨</span>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="estudo-vs-trabalho.html" class="card">
+            <div class="card-header">
+                <span class="card-icon">⏰</span>
+                <span class="card-tag">Gestão de Tempo</span>
+            </div>
+            <h3>Estudo vs. Trabalho</h3>
+            <p>Como conciliar o cansaço da rotina de trabalho com as metas de estudo.</p>
+            <span class="btn-card">Ler Artigo Completo ✨</span>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="desorganizacao-cronograma.html" class="card">
+            <div class="card-header">
+                <span class="card-icon">🗓️</span>
+                <span class="card-tag">Planejamento</span>
+            </div>
+            <h3>Desorganização do Cronograma</h3>
+            <p>Criar rotinas irrealistas e acabar perdendo a motivação na semana.</p>
+            <span class="btn-card">Ler Artigo Completo ✨</span>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="ambiente-ansiedade.html" class="card">
+            <div class="card-header">
+                <span class="card-icon">🌿</span>
+                <span class="card-tag">Bem-estar</span>
+            </div>
+            <h3>Ambiente e Ansiedade</h3>
+            <p>Lidar com a sensação de estar atrasada e manter o ambiente limpinho.</p>
+            <span class="btn-card">Ler Artigo Completo ✨</span>
+        </a>
+    </main>
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        }
+
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const taskText = input.value.trim();
+            const toast = document.getElementById('toastMsg');
+
+            if (taskText === '') {
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+                return;
+            }
+
+            toast.style.display = 'none';
+            const taskList = document.getElementById('taskList');
+            const li = document.createElement('li');
+
+            li.innerHTML = `
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="task-text">${escapeHtml(taskText)}</span>
+                </label>
+                <button type="button" class="btn-delete" onclick="removeTask(this)">✕</button>
+            `;
+
+            taskList.appendChild(li);
+            input.value = '';
+        }
+
+        function removeTask(button) {
+            const listItem = button.closest('li');
+            listItem.style.opacity = '0';
+            listItem.style.transform = 'scale(0.9)';
+            listItem.style.transition = 'all 0.2s ease';
+            setTimeout(() => {
+                listItem.remove();
+            }, 200);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
