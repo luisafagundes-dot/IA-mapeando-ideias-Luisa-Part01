@@ -1,22 +1,16 @@
-// Função para abrir o modal selecionado
-function openModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "flex";
-    }
-}
+// Seleção dos elementos do DOM
+const button = document.getElementById('interactive-btn');
+const outputBox = document.getElementById('output-message');
 
-// Função para fechar o modal
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.style.display = "none";
-    }
-}
+let clickCount = 0;
 
-// Fechar o modal caso o usuário clique fora da caixa do modal
-window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-        event.target.style.display = "none";
-    }
-};
+// Evento de clique para mudar o estado e o visual da página
+button.addEventListener('click', () => {
+    clickCount++;
+    
+    // Atualiza o texto da caixa
+    outputBox.textContent = `Você interagiu com a página ${clickCount} vez(es)!`;
+    
+    // Adiciona uma classe para mudar a cor via CSS
+    outputBox.classList.add('active');
+});
