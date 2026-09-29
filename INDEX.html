@@ -3,143 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luisa's Study Routine</title>
-    <!-- Fonte Pixel/Retro e Fonte Elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Aplicação Interativa</title>
+    <!-- Vincula o arquivo de estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="container">
-        <!-- Cabeçalho -->
-        <header class="header">
-            <h1 class="pixel-title">Luisa's study routine</h1>
-            <p class="subtitle">Sua central amarela de organização para estudos, trabalho e rotina sem estresse ✨</p>
-        </header>
-
-        <!-- Grade de Cards de Problemas/Incômodos do Dia a Dia -->
-        <main class="cards-grid">
-            
-            <!-- Card 1 -->
-            <div class="card" onclick="openModal('modal-procrastinacao')">
-                <div class="card-icon">🧠</div>
-                <h3>Procrastinação & Foco</h3>
-                <p>Incômodo: Adiar tarefas e se distrair facilmente com o celular durante as sessões de estudo.</p>
-                <button class="btn-card">Organizar Solução ➔</button>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card" onclick="openModal('modal-sobrecarga')">
-                <div class="card-icon">📚</div>
-                <h3>Acúmulo de Matérias</h3>
-                <p>Incômodo: Sensação de estar sempre atrasado(a) com a matéria e prazos apertados.</p>
-                <button class="btn-card">Organizar Solução ➔</button>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card" onclick="openModal('modal-trabalho-estudo')">
-                <div class="card-icon">⚖️</div>
-                <h3>Conciliar Trabalho & Estudo</h3>
-                <p>Incômodo: Cansaço extremo após a jornada de trabalho e falta de tempo/energia para estudar.</p>
-                <button class="btn-card">Organizar Solução ➔</button>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card" onclick="openModal('modal-ambiente')">
-                <div class="card-icon">🛋️</div>
-                <h3>Ambiente & Desorganização</h3>
-                <p>Incômodo: Mesa bagunçada, arquivos digitais perdidos e ruídos incômodos no dia a dia.</p>
-                <button class="btn-card">Organizar Solução ➔</button>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="card" onclick="openModal('modal-rotina-diaria')">
-                <div class="card-icon">☀️</div>
-                <h3>Insatisfação com a Rotina</h3>
-                <p>Incômodo: Sensação de que o dia rendeu pouco e falta de tempo para descansar com qualidade.</p>
-                <button class="btn-card">Organizar Solução ➔</button>
-            </div>
-
-        </main>
-    </div>
-
-    <!-- Modais com Checklist -->
-
-    <!-- Modal 1 -->
-    <div id="modal-procrastinacao" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-procrastinacao')">&times;</span>
-            <h2>🧠 Foco & Procrastinação</h2>
-            <p class="modal-desc">Marque as ações abaixo para retomar o controle do seu tempo:</p>
-            <ul class="checklist">
-                <li><input type="checkbox"> Usar a técnica Pomodoro (25 min foco / 5 min pausa)</li>
-                <li><input type="checkbox"> Deixar o celular em outro cômodo enquanto estuda</li>
-                <li><input type="checkbox"> Bloquear redes sociais nos horários de produção</li>
-                <li><input type="checkbox"> Definir apenas 3 metas prioritárias para hoje</li>
-            </ul>
+    <main class="container">
+        <h1>Minha Aplicação Interativa</h1>
+        <p>Clique no botão abaixo para interagir:</p>
+        
+        <button id="interactive-btn" class="btn">Clique Aqui</button>
+        
+        <div id="output-message" class="message-box">
+            Aguardando interação...
         </div>
-    </div>
+    </main>
 
-    <!-- Modal 2 -->
-    <div id="modal-sobrecarga" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-sobrecarga')">&times;</span>
-            <h2>📚 Acúmulo de Matérias</h2>
-            <p class="modal-desc">Ações para colocar os conteúdos em dia gradualmente:</p>
-            <ul class="checklist">
-                <li><input type="checkbox"> Fazer uma lista de todo o conteúdo atrasado</li>
-                <li><input type="checkbox"> Dividir temas grandes em blocos menores de 15 minutos</li>
-                <li><input type="checkbox"> Priorizar assuntos com provas ou entregas mais próximas</li>
-                <li><input type="checkbox"> Revisar os resumos no final do dia por 10 minutos</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Modal 3 -->
-    <div id="modal-trabalho-estudo" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-trabalho-estudo')">&times;</span>
-            <h2>⚖️ Conciliar Trabalho e Estudo</h2>
-            <p class="modal-desc">Dicas para otimizar sua energia ao longo do dia:</p>
-            <ul class="checklist">
-                <li><input type="checkbox"> Estudar 30 minutos antes do expediente de trabalho</li>
-                <li><input type="checkbox"> Aproveitar deslocamentos/almoço para escutar áudios ou resumos</li>
-                <li><input type="checkbox"> Estabelecer um horário fixo para encerrar os estudos e descansar</li>
-                <li><input type="checkbox"> Comunicar a família/amigos sobre seus horários de dedicação</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Modal 4 -->
-    <div id="modal-ambiente" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-ambiente')">&times;</span>
-            <h2>🛋️ Organização do Ambiente</h2>
-            <p class="modal-desc">Ajustes práticos no seu espaço de estudos e trabalho:</p>
-            <ul class="checklist">
-                <li><input type="checkbox"> Limpar e organizar a escrivaninha antes de começar</li>
-                <li><input type="checkbox"> Deixar uma garrafa de água cheia ao lado do computador</li>
-                <li><input type="checkbox"> Organizar a pasta do computador por matérias/projetos</li>
-                <li><input type="checkbox"> Usar fones de ouvido com ruído branco ou música instrumental</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Modal 5 -->
-    <div id="modal-rotina-diaria" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-rotina-diaria')">&times;</span>
-            <h2>☀️ Rotina & Qualidade de Vida</h2>
-            <p class="modal-desc">Hábitos diários para ter um dia mais produtivo e leve:</p>
-            <ul class="checklist">
-                <li><input type="checkbox"> Planejar as tarefas do dia seguinte na noite anterior</li>
-                <li><input type="checkbox"> Dormir no mínimo 7 a 8 horas por noite</li>
-                <li><input type="checkbox"> Fazer pequenas pausas para alongamento durante o estudo</li>
-                <li><input type="checkbox"> Separar ao menos 30 minutos livres no dia sem culpa</li>
-            </ul>
-        </div>
-    </div>
-
+    <!-- Vincula o arquivo de lógica JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
